@@ -12,10 +12,13 @@
 /* Global Variables */
 const api_key = "fde7bb13d16debd8e524a7bccdaf1b03";
 const display = document.querySelector(".grid-container");
+let page = 1;
 const movieForm = document.querySelector("form");
+const loadMoreButton = document.querySelector("#load-more");
 
 /* Event Handlers */
 movieForm.addEventListener("submit", handleSearch);
+loadMoreButton.addEventListener("click", loadMoreMovies);
 
 
 /**
@@ -23,7 +26,7 @@ movieForm.addEventListener("submit", handleSearch);
  */
 async function getMovies () {
     console.log("Inside getResults...");
-    const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=en-US`;
+    const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=en-US&page=${page}`;
 
     //go to movie API
     const response = await fetch(apiUrl);
@@ -59,12 +62,16 @@ function handleSearch (event) {
     console.log("Inside handleSearch...")
 }
 
+function loadMoreMovies (event) {
+    console.log("Inside loadMoreMovies...");
+    page++;
+    getMovies();
+}
+
 window.onload = function () {
   // run your function here to make it execute as soon as the page loads
   getMovies();
 }
-
-
 
 
 /* Additional Features */
