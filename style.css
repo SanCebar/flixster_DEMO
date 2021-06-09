@@ -1,19 +1,21 @@
-* {
+body {
     background-color: #1D1B26;
     color: white;
     text-align: center;
 }
+
+/* .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+} */
 
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-auto-rows: minmax(150px, auto);
     grid-gap: 5px;
-}
+} 
 
-.grid-item {
-    background-color: teal;
-    color: black;
-    padding: 10%;
-    margin: 10px;
+.grid-item img:hover {
+    opacity: 0.5;
 }
