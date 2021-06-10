@@ -4,17 +4,22 @@ body {
     text-align: center;
 }
 
-/* .grid-container {
-    display: flex;
-    flex-wrap: wrap;
-} */
+.hidden {
+    display: none;
+}
 
 .grid-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between
+}
+
+/* .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-auto-rows: minmax(150px, auto);
     grid-gap: 5px;
-} 
+}  */
 
 .grid-item img:hover {
     opacity: 0.5;

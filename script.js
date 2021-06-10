@@ -13,8 +13,10 @@
 const api_key = "fde7bb13d16debd8e524a7bccdaf1b03";
 const display = document.querySelector(".grid-container");
 let page = 1;
+
 const movieForm = document.querySelector("form");
 const loadMoreButton = document.querySelector("#load-more");
+const toTopButton = document.querySelector("#to-top");
 
 /* Event Handlers */
 movieForm.addEventListener("submit", handleSearch);
@@ -25,9 +27,10 @@ loadMoreButton.addEventListener("click", loadMoreMovies);
  * getMovies - retrieves array of objects from API
  */
 async function getMovies () {
-    console.log("Inside getResults...");
-    const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=en-US&page=${page}`;
+    console.log("Inside getMovies...");
+    console.log("page number ---->", page);
 
+    let apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=en-US&page=${page}`;
     //go to movie API
     const response = await fetch(apiUrl);
     const responseData = await response.json();
@@ -35,7 +38,6 @@ async function getMovies () {
     console.log(responseData);
     console.log(data);
 
-    //display movies
     displayMovies(data);
 }
 
@@ -49,7 +51,7 @@ function displayMovies(data) {
     data.forEach(element => {
         display.innerHTML += `
             <div class="grid-item"> 
-                <img src="http://image.tmdb.org/t/p/w185${element.poster_path}" alt="Movie Poster for ${element.title}">
+                <img src="http://image.tmdb.org/t/p/w200${element.poster_path}" alt="Movie Poster for ${element.title}">
                 <h4>${element.title}</h4>
                 <h5>Votes: ${element.vote_count}<h5>
             </div>
@@ -57,19 +59,58 @@ function displayMovies(data) {
     }); 
 }
 
-function handleSearch (event) {
+/**
+ * handleSearch - activated by a search submission
+ *                calls search API
+ * 
+ * @param {*} event 
+ */
+async function handleSearch (event) {
+    console.log("Inside handleSearch...");
+    
     event.preventDefault();
-    console.log("Inside handleSearch...")
+    page = 1;
+    const searchTerm = event.target.searchForm.value;
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${api_key}&language=en-US&page=${page}`;
+
+    //go to movie search API
+    const response = await fetch(searchUrl);
+    const responseData = await response.json();
+    const data = responseData.results;
+    console.log(responseData);
+    console.log(data);
+
+    //modify bottom screen  buttons
+    loadMoreButton.classList.add("searchScreen");
+    toTopButton.classList.add("hidden");
+
+
+    //display Movies
+    display.innerHTML = ``;
+    event.target.searchForm.value = '';
+    displayMovies(data);
 }
 
+/**
+ * loadMoreMovie - activated by a click on the load more movies button
+ *                 updates global variable page then calls getMovies
+ * 
+ * @param {*} event 
+ */
 function loadMoreMovies (event) {
     console.log("Inside loadMoreMovies...");
     page++;
-    getMovies();
+    if (loadMoreButton.classList.contains("searchScreen")) {
+        getMovies();
+    } else {
+        getMovies();
+    } 
 }
+
 
 window.onload = function () {
   // run your function here to make it execute as soon as the page loads
+  page =  1;
   getMovies();
 }
 
