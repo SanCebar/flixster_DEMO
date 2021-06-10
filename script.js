@@ -48,12 +48,13 @@ async function getMovies () {
  * @param {*} data 
  */
 function displayMovies(data) {
+    let posterSize = "w185"; //alt sizes: w154, w185, w200, w342, w500, w780, original 
     data.forEach(element => {
         display.innerHTML += `
             <div class="grid-item"> 
-                <img src="http://image.tmdb.org/t/p/w200${element.poster_path}" alt="Movie Poster for ${element.title}">
+                <img src="http://image.tmdb.org/t/p/${posterSize}${element.poster_path}" alt="Movie Poster for ${element.title}">
                 <h4>${element.title}</h4>
-                <h5>Votes: ${element.vote_count}<h5>
+                <h4>Votes: ${element.vote_count}<h4>
             </div>
         `
     }); 
