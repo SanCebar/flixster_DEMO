@@ -11,16 +11,20 @@
 
 /* Global Variables */
 const api_key = "fde7bb13d16debd8e524a7bccdaf1b03";
-const display = document.querySelector(".grid-container");
+const moviesDisplay = document.querySelector(".grid-container");
 let page = 1;
 
 const movieForm = document.querySelector("form");
 const loadMoreButton = document.querySelector("#load-more");
 const toTopButton = document.querySelector("#to-top");
+const popUpDisplay = document.querySelector(".pop-up");
+
 
 /* Event Handlers */
 movieForm.addEventListener("submit", handleSearch);
+//movieForm.addEventListener("input", handleSearch); //make search results appear as they're typed
 loadMoreButton.addEventListener("click", loadMoreMovies);
+
 
 
 /**
@@ -50,7 +54,7 @@ async function getMovies () {
 function displayMovies(data) {
     let posterSize = "w185"; //alt sizes: w154, w185, w200, w342, w500, w780, original 
     data.forEach(element => {
-        display.innerHTML += `
+        moviesDisplay.innerHTML += `
             <div class="grid-item"> 
                 <img src="http://image.tmdb.org/t/p/${posterSize}${element.poster_path}" alt="Movie Poster for ${element.title}">
                 <h4>${element.title}</h4>
@@ -67,8 +71,7 @@ function displayMovies(data) {
  * @param {*} event 
  */
 async function handleSearch (event) {
-    console.log("Inside handleSearch...");
-    
+    console.log("Inside handleSearch...");    
     event.preventDefault();
     page = 1;
     const searchTerm = event.target.searchForm.value;
@@ -82,12 +85,12 @@ async function handleSearch (event) {
     console.log(data);
 
     //modify bottom screen  buttons
-    loadMoreButton.classList.add("searchScreen");
+    loadMoreButton.classList.add("hidden");
     toTopButton.classList.add("hidden");
 
 
-    //display Movies
-    display.innerHTML = ``;
+    //moviesDisplay Movies
+    moviesDisplay.innerHTML = ``;
     event.target.searchForm.value = '';
     displayMovies(data);
 }
@@ -101,25 +104,23 @@ async function handleSearch (event) {
 function loadMoreMovies (event) {
     console.log("Inside loadMoreMovies...");
     page++;
-    if (loadMoreButton.classList.contains("searchScreen")) {
-        getMovies();
-    } else {
-        getMovies();
-    } 
+    getMovies();
 }
-
 
 window.onload = function () {
-  // run your function here to make it execute as soon as the page loads
-  page =  1;
-  getMovies();
+    // run your function here to make it execute as soon as the page loads
+    page =  1;
+    getMovies();
 }
 
-
 /* Additional Features */
-// let popUp = () => {
-//     //logic
-// }
 
-// /* wait for click to create pop-up window */
-// grid_item_1.addEventListener("click", popUp);
+// const testPoster = document.querySelector(".grid-item")
+// testPoster.addEventListener("click", popUp);
+
+// function popUp (event) {
+//     popUpDisplay.innerHTML = `
+//         <h2>Movie Title</h2>
+//         <p>Movie Description</p>
+//     `
+// }
