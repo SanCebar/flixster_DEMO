@@ -95,9 +95,11 @@ async function handleSearch (event) {
     console.log(responseData);
     console.log(data);
 
-    //modify bottom screen  buttons
+    //modify screen
     loadMoreButton.classList.add("hidden");
     toTopButton.classList.add("hidden");
+    document.querySelector("#default-header").classList.add("hidden");
+    document.querySelector("#search-header").classList.remove("hidden");
 
 
     //moviesDisplay Movies

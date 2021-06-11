@@ -14,10 +14,13 @@ a {
 }
 
 /* Top Bar Styling */
-.top-bar h1{
-    text-align: center;
+
+.top-bar h1 {
     color: white;
+    text-align: center;
 }
+
+/*** Footer Styling***/
 
 footer {
     padding: 18px;
@@ -63,6 +66,7 @@ footer img {
 
 .grid-item .movie-poster:hover {
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .grid-container button {
