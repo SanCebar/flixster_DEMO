@@ -19,6 +19,8 @@ const loadMoreButton = document.querySelector("#load-more");
 const toTopButton = document.querySelector("#to-top");
 const popUpDisplay = document.querySelector(".pop-up");
 
+//remove horizontal scroll bar
+//document.documentElement.style.overflowX = 'hidden';
 
 /* Event Handlers */
 movieForm.addEventListener("submit", handleSearch);
@@ -56,9 +58,18 @@ function displayMovies(data) {
     data.forEach(element => {
         moviesDisplay.innerHTML += `
             <div class="grid-item"> 
-                <img src="http://image.tmdb.org/t/p/${posterSize}${element.poster_path}" alt="Movie Poster for ${element.title}">
-                <h4>${element.title}</h4>
-                <h4>Votes: ${element.vote_count}<h4>
+                <button class="popUpBtn" onclick="popUp(this);">
+                <img class="movie-poster" src="http://image.tmdb.org/t/p/${posterSize}${element.poster_path}" alt="Movie Poster for ${element.title}">
+                <h3 class="movie-title hidden">${element.original_title}</h3>
+                <h4 class="movie-lang hidden"> ${element.original_language} </h4>
+                <h4 class="vote-count hidden"> ${element.vote_count} </h4>
+                <p class="movie-overview hidden">${element.overview}</p>
+                </button>
+                
+                <section class="below-poster-info">
+                    <h4 class="title">${element.title}</h4>
+                    <h4>⭐ ${element.vote_average}<h4>
+                </section>
             </div>
         `
     }); 
@@ -115,12 +126,26 @@ window.onload = function () {
 
 /* Additional Features */
 
-// const testPoster = document.querySelector(".grid-item")
-// testPoster.addEventListener("click", popUp);
+function popUp (el) {
+    console.log(el);
+    if (popUpDisplay.classList.contains("hidden")) {
+        popUpDisplay.classList.remove("hidden");
+    } else {
+        popUpDisplay.classList.add("hidden");
+    }
 
-// function popUp (event) {
-//     popUpDisplay.innerHTML = `
-//         <h2>Movie Title</h2>
-//         <p>Movie Description</p>
-//     `
-// }
+    //gather movie info
+    let poster = el.querySelector("img").src;
+    let title = el.querySelector(".movie-title").innerHTML;
+    let movie_lang = el.querySelector(".movie-lang").innerHTML;
+    let votes = el.querySelector(".vote-count").innerHTML;
+    let overview = el.querySelector(".movie-overview").innerHTML;
+    
+    popUpDisplay.innerHTML = `
+        <img src="${poster}">
+        <h2>${title}</h2>
+        <h3>Original Language: ${movie_lang}</h3>
+        <h3>Vote Count: ${votes}</h3>
+        <p>${overview}</p>
+    `
+}
