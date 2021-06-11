@@ -13,11 +13,29 @@ a {
     text-decoration: none;
 }
 
+/* #sizeBtn {
+    margin-top: 0;
+    margin-bottom: 20px;
+} */
+
 /* Top Bar Styling */
+
+@media (max-width: 600px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.top-bar {
+    text-align: center;
+}
 
 .top-bar h1 {
     color: white;
     text-align: center;
+    font-size: 40pt;
 }
 
 /*** Footer Styling***/
@@ -53,12 +71,7 @@ footer img {
 }
 
 /* Display changes to column-wise for small screens */
-@media (max-width: 600px) {
-    .grid-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+
 
 .grid-item {
     padding: 0;
@@ -83,6 +96,17 @@ footer img {
 .below-poster-info {
     display: flex;
     max-width: 180px;
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .below-poster-info {
+        font-size: 22pt;
+        max-width: 320px;
+    }
 }
 
 /*** Pop-Up Styling ***/

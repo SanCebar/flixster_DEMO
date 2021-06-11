@@ -7,24 +7,27 @@
     <title>Document</title>
     <link href="style.css" rel="stylesheet" type="text/css"/>
     <link href="sandbox.css" rel="stylesheet" type="text/css"/>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 </head>
 <body>
-    <div class="search-container">
-        <form>
-            <input  id ="movie-search" type="text" placeholder="Search here..." name="searchForm" required/>
-            <div class="search"></div>
-        </form>
+    <div class="header">
+        <div class="search-container">
+            <form>
+                <input  id ="movie-search" type="text" placeholder="Search here..." name="searchForm" required/>
+                <div class="search"></div>
+            </form>
+        </div>
+        
+        <div class="top-bar">
+            <a href="index.html">
+                <h1><img height="40px" src="assets/filmreel.png"> Flixster</h1> 
+            </a>
+        </div>
     </div>
-    <div class="top-bar">
-        <a href="index.html">
-            <h1>Flixster</h1> 
-            <!-- <img height="80px" src="assets/filmreel.png">  -->
-        </a>
-    </div>
-    
     <h2 id="default-header">Now Playing</h2><br>
     <h2 id="search-header" class="hidden">Search Results</h2><br>
-    
+    <!-- <button id="sizeBtn" onclick="reSizer();"><i class="material-icons">photo_size_select_large</i></button><br> -->
+
     <div class="pop-up hidden">
     </div>
 
@@ -33,7 +36,7 @@
 
     <div class="lower-menu">
         <button id="load-more">Load More Movies</button>
-        <a href=""><button id="to-top">Back to the Top</button></a>
+        <a href="index.html"><button id="to-top">Back to the Top</button></a>
     </div>
     <footer> Source: 
         <a href="https://www.themoviedb.org/" target="_blank">

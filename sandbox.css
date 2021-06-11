@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+* {
+  box-sizing: border-box;
+}
+
+.search-container {
+    float: right;
+    position: sticky;
+    top: 0;
+    left: 10;
+    right: 100px;
+    bottom: 1;
+    width: 300px;
+    height: 100px;
+}  
+
+.search {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background: #ff9800;
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+
+.search:hover {
+    cursor: pointer;
+}
+    
+.search::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: 22px;
+    right: 0;
+    bottom: 0;
+    left: 22px;
+    width: 12px;
+    height: 2px;
+    background: white;
+    transform: rotate(45deg);
+    transition: all .2s;
+}
+    
+.search::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: -5px;
+    right: 0;
+    bottom: 0;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: all .2s;
+}
+  
+input {
+    font-family: 'Inconsolata', monospace;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background: #ff9800;
+    color: black;
+    text-shadow: 0 0 10px #ff9800;
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 25px 0 #ff9800,
+                0 20px 25px 0 rgba(0, 0, 0, 0.2);
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+}
+
+input:hover {
+    cursor: pointer;
+}
+    
+input:focus {
+    width: 300px;
+    opacity: 1;
+    cursor: text;
+}
+    
+input:focus ~ .search {
+    right: -250px;
+    background: #151515;
+    z-index: 6;
+}
+      
+input::before {
+    top: 0;
+    left: 0;
+    width: 25px;
+}
+      
+input::after {
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    border: none;
+    background: black;
+    border-radius: 0%;
+    transform: rotate(-45deg);
+}
+    
+input::placeholder {
+    color: black;
+    opacity: 0.5;
+    font-weight: bolder;
+}
+  
+
