@@ -5,7 +5,7 @@ Submitted by: Robert Velasco
 
 Estimated time spent: 32 hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://sancebar.github.io/flixster_DEMO/)
 
 ### Application Features
 
