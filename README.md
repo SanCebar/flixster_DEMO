@@ -33,15 +33,23 @@ https://www.loom.com/share/8358cdd1ad67426f8f064b765b44effeK
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes. Days 2 and 3 in particular really helped my understanding of how functions operate in javsscript (js), and how js interacts with HTML and CSS. I had never worked
+with an API before. 
+
+I felt good about all the required feautures, but some of the stretch features (the pop-up in particular) were especially challenging and outside the scope of the daily labs.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+Granted more time, I would have loved to enhance the styling and appearance of the assignment, especially for the pop-up and buttons. 
+I also wanted to add a resize button on screen that would allow users to toggle between the standard and larger sizes of the movie posters and text.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think my project demo went well. I was happy with all the features I managed to implement. There were improvements I would have liked to make. For example,
+my search bar animation slightly goes off screen. 
+
+Everyone else's demos were great. I really liked the extra details on the search screen for someone's demo. They included the searched term on screen, which 
+I thought was a nice touch, and I would've liked to do as well.
 
 ### Open-source libraries used
 
@@ -49,4 +57,5 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+I'd like to give a shoutout to all interns I've had the chancce to work with this week in breakout rooms. In particular, 
+Kordel really helped figure out the pop-up feature logic today, so huge thanks there.
